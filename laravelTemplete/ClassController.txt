@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\#CLASS_NAME_2#;
+use App\Models\Finition;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class #CLASS_NAME_2#Controller extends Controller
+{
+    public function list() {
+        $obj = new #CLASS_NAME_2#();
+        $#CLASS_NAME# = $obj->getAll#CLASS_NAME_2#();
+        return view('#CLASS_NAME#.list_#CLASS_NAME#',[
+            '#CLASS_NAME#s' => $#CLASS_NAME#
+        ]);
+    }
+
+//    public function #CLASS_NAME#InsertView() {
+//        return view('#CLASS_NAME#.insert_#CLASS_NAME#');
+//    }
+
+    public function insert(Request $request){
+        $request->validate(
+        #ARRAY#
+        );
+        try {
+            $id = DB::table('#CLASS_NAME#')->insertGetId(#ARRAY_2#,'id');
+            return back()->with('message',['Inserer #CLASS_NAME# avec succes']);
+        } catch (\Exception $e) {
+            return back()->with('errors',$e->getMessage());
+        }
+    }
+
+    public function #CLASS_NAME#EditView($id) {
+        $#CLASS_NAME# = #CLASS_NAME_2#::get#CLASS_NAME_2#ById($id);
+
+        return view('#CLASS_NAME#.update_#CLASS_NAME#',[
+            '#CLASS_NAME#' => $#CLASS_NAME#
+        ]);
+    }
+
+    public function #CLASS_NAME#Edit(Request $request) {
+        $request->validate(
+        #ARRAY#
+        );
+
+        try {
+            DB::table('#CLASS_NAME#')
+                ->where('id', $request->id)
+                ->update(
+                    #ARRAY_2#
+                );
+
+            return redirect('/#CLASS_NAME#')->with('message',['Modier avec succes']);
+
+        } catch (\Exception $e) {
+            return back()->with('errors',$e->getMessage());
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            DB::table('#CLASS_NAME#')
+                ->where('id',$id)
+                ->delete();
+            return back()->with('success',['Supprimer avec succes']);
+        } catch (\Exception $e) {
+            return back()->with('errors',$e->getMessage());
+        }
+    }
+
+}

@@ -1,0 +1,30 @@
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '#CLASS_NAME_2#/list',
+    loadChildren: () => import('./#CLASS_NAME_2#/list/list.module').then( m => m.ListPageModule)
+  },
+  {
+    path: '',
+    redirectTo: '#CLASS_NAME_2#/list',
+    pathMatch: 'full'
+  },
+  {
+    path: '#CLASS_NAME_2#/create',
+    loadChildren: () => import('./#CLASS_NAME_2#/create/create.module').then( m => m.CreatePageModule)
+  },
+  {
+    path: '#CLASS_NAME_2#/edit/:id',
+    loadChildren: () => import('./#CLASS_NAME_2#/edit/edit.module').then( m => m.EditPageModule)
+  },
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

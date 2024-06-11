@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import axios from "axios";
+
+@Component({
+  selector: 'app-create',
+  templateUrl: './create.page.html',
+  styleUrls: ['./create.page.scss'],
+})
+export class CreatePage implements OnInit {
+
+  ##ATTRIBUTS##
+  ##FORMS_STATE##
+  constructor() {
+  }
+  ngOnInit() {
+    ##DECLAR_FUNCTION##
+  }
+
+  ##FUNCTION##
+
+  create (){
+    ##FORMDATA##
+    axios.post("#URL#",formData)
+      .then(
+        (response)=>{
+          console.log(formData)
+        }
+      )
+      .catch(
+        (error)=>{
+          console.log(error)
+        }
+      )
+  }
+}

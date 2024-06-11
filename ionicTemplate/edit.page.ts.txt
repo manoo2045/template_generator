@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import axios from "axios";
+
+@Component({
+  selector: 'app-edit',
+  templateUrl: './edit.page.html',
+  styleUrls: ['./edit.page.scss'],
+})
+export class EditPage implements OnInit {
+  private idUp: number | undefined;
+  item:any = {};
+  ##FORMS_STATE##
+  ##ATTRIBUTS##
+
+  constructor(private activatedRoute: ActivatedRoute) { }
+  ngOnInit() {
+    this.activatedRoute.params.subscribe((params) =>{
+      this.idUp = +params['id'];
+      this.##PRIMARYKEY## = this.idUp;
+      this.getItem(this.id);
+      console.log(this.id);
+    })
+    ##DECLAR_FUNCTION##
+  }
+
+  ##FUNCTION##
+
+  update (){
+    ##FORMDATA##
+    axios.put(`#URL#/`,formData)
+      .then(
+        (response)=>{
+          console.log(response)
+        }
+      )
+      .catch((error)=>{
+        console.log(error)
+      })
+  }
+
+  getItem(id:number) {
+    this.id = id
+    axios.get(`#URL#/${id}`)
+      .then(
+        (response)=>{
+          console.log(response.data)
+          this.item = response.data
+        }
+      )
+      .catch((error)=>{
+        console.log(error)
+      })
+  }
+}

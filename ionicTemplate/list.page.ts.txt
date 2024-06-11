@@ -1,0 +1,47 @@
+import { Component } from '@angular/core';
+import {Router} from "@angular/router";
+import {NavController, ToastController} from "@ionic/angular";
+import axios from "axios";
+
+@Component({
+  selector: 'app-home',
+  templateUrl: 'list.page.html',
+  styleUrls: ['list.page.scss'],
+})
+export class ListPage {
+
+  items:any = [];
+  constructor(private router:Router,public toastController:ToastController,public navCtl:NavController) {
+    this.getAllItem()
+  }
+
+  getAllItem() {
+    axios.get("#URL#")
+      .then(
+        (response)=>{
+          this.items = response.data
+        }
+      )
+      .catch(
+        (error)=>{
+          console.log(error)
+        }
+      )
+  }
+
+  edit(id:number) {
+    this.navCtl.navigateForward(`#CLASS_NAME_2#/edit/${id}`)
+  }
+
+  delete(id:number) {
+    axios.delete(`#URL#/${id}`)
+      .then(
+        (response)=>{
+          console.log(response)
+        }
+      )
+      .catch((error)=>{
+        console.log(error)
+      })
+  }
+}

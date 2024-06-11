@@ -1,0 +1,16 @@
+Route::get('/#CLASS_NAME#',[#CLASS_NAME_2#Controller::class,'list']);
+Route::get('/#CLASS_NAME#/list/',[#CLASS_NAME_2#Controller::class,'list']);
+Route::post('/#CLASS_NAME#/insert',[#CLASS_NAME_2#Controller::class,'insert']);
+Route::get('/#CLASS_NAME#/edit/{id}',[#CLASS_NAME_2#Controller::class,'#CLASS_NAME#EditView']);
+//Route::get('/#CLASS_NAME#/insert',[#CLASS_NAME_2#Controller::class,'#CLASS_NAME#InsertView']);
+Route::post('/#CLASS_NAME#/update',[#CLASS_NAME_2#Controller::class,'#CLASS_NAME#Edit']);
+Route::get('/#CLASS_NAME#/delete/{id}',[#CLASS_NAME_2#Controller::class,'delete']);
+
+
+<li class="sidebar-item">
+    <a href="{{ url('/#CLASS_NAME#/list') }}" class="sidebar-link">
+        <i class="mdi mdi-av-timer"></i>
+        <span class="hide-menu">#CLASS_NAME#</span>
+    </a>
+</li>
+

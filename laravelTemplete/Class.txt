@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+class #CLASS_NAME_2# extends Model
+{
+    use HasFactory;
+
+    public static function get#CLASS_NAME_2#ById($id){
+        return DB::table('#CLASS_NAME#')
+            ->where('id',$id)
+            ->first();
+    }
+
+    public function getAll#CLASS_NAME_2#() {
+        return DB::table('#CLASS_NAME#')
+            ->get();
+    }
+
+
+}
